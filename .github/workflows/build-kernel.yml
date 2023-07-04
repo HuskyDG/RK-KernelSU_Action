@@ -20,10 +20,6 @@ on:
         description: 'Target ARCH'
         required: true
         default: 'arm64'
-      KERNELSU_BRANCH:
-        description: 'KernelSU Branch'
-        required: true
-        default: 'main'
       KERNEL_FILE:
         description: 'Your kernel out image name'
         required: true
@@ -101,11 +97,11 @@ jobs:
             echo "CONFIG_HAVE_KPROBES=y" >> arch/${{ env.TARGET_ARCH }}/configs/${{ env.KERNEL_DEFCONFIG }}
             echo "CONFIG_KPROBE_EVENTS=y" >> arch/${{ env.TARGET_ARCH }}/configs/${{ env.KERNEL_DEFCONFIG }}
             rm -rf ./drivers/kernelsu
-            curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s "${{ env.KERNELSU_BRANCH }}"
+            curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
             echo "UPLOADNAME=-KernelSU" >> $GITHUB_ENV
         else
             rm -rf ./drivers/kernelsu
-            curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s "${{ env.KERNELSU_BRANCH }}"
+            curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
             echo "UPLOADNAME=-KernelSU" >> $GITHUB_ENV
         fi
     - name: Generate kernel configuration
