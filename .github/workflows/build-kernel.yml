@@ -7,7 +7,7 @@ on:
       KERNEL_SOURCE:
         description: 'Kernel Source'
         required: true
-        default: 'Rohail33/Realking_kernel_sm8250'
+        default: 'HuskyDG/Realking_kernel_sm8250'
       KERNEL_SOURCE_BRANCH:
         description: 'Branch'
         required: true
